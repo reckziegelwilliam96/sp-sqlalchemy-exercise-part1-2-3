@@ -1,0 +1,12 @@
+{% block title %} User Detail {% endblock %}
+
+{% block content %}
+<img src="{{ user.imageurl }}" >
+<h1>{{user.firstname}} {{user.lastname}}</h1>
+<form action="/users/{{ user.id }}/edit" method="GET">
+    <button>Edit</button>
+</form>
+<form action="/users/{{ user.id }}/delete" method="GET">
+    <button>Delete</button>
+</form>
+{% endblock %}

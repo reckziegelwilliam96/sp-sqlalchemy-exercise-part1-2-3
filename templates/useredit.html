@@ -1,0 +1,16 @@
+{% block title %} User Edit {% endblock %}
+
+{% block content %}
+<h1>Edit user</h1>
+<form action='/users/{{ user.id }}/edit' method='POST'>
+    <p> {{user.first_name}}
+    <input type="text" name="firstname" placeholder="Edit First Name"></p>
+    <p> {{ user.last_name }}
+    <input type="text" name="lastname" placeholder="Edit Last Name"></p>
+    <p> {{ user.image_url }} <input type="text" name="imageurl" placeholder="Edit Image">
+    <button>Save</button>
+</form>
+<form action='/users/{{ user.id }}' method="GET">
+    <button>Cancel</button>
+</form>
+{% endblock %}
