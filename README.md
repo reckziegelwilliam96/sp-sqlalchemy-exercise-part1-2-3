@@ -11,3 +11,10 @@ Create Flask App
 Make a Base Template
 User Interface
 Routes
+
+Blogly
+Part Two: Adding Posts
+In this part, we’ll add functionality for blog posts using the one-to-many features of SQLAlchemy.
+
+Part Two
+User Interface
