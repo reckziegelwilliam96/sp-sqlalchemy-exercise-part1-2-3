@@ -11,7 +11,7 @@ db.drop_all()
 db.create_all()
 
 
-class PetModelTestCase(TestCase):
+class UserModelTestCase(TestCase):
     """Tests for model for Users."""
 
     def setUp(self):

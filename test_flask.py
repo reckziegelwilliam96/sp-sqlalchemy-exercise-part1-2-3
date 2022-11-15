@@ -18,7 +18,7 @@ db.create_all()
 
 
 class UserViewsTestCase(TestCase):
-    """Tests for views for Pets."""
+    """Tests for views for Users."""
 
     def setUp(self):
         """Add sample user."""
@@ -71,3 +71,21 @@ class UserViewsTestCase(TestCase):
 
             self.asserEqual(resp.status_code, 200)
             self.assertNotIn('TestUser3', html)
+
+
+class PostViewsTestCase(TestCase):
+    """Tests for views for Posts."""
+    def setUp(self):
+        """Add sample post with user test."""
+        user = User(first_name="TestUser4", last_name="TestUser4")
+        post = Post(title="TestPostTitle", content="TestPostContent", user=user)
+        db.session.add(user)
+        db.session.add(post)
+        db.session.commit()
+
+        self.user_id = user.id
+        self.post_id = post.id
+
+    def tearDown(self):
+        """Clean up any fouled transaction."""
+        db.session.rollback()
