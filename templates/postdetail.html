@@ -3,16 +3,23 @@
 {% block title %} Post Detail {% endblock %}
 
 {% block content %}
-<p>Date: {{ post.created_at }}</p>
-<h1>Title:</h1> 
-<h1>{{ post.title }}</h1>
-<p>Content:</p> 
+<h1>Post</h1>
+<p>Date: {{ post.user_date }}</p>
+<h2>Title: {{ post.title }}</h2> 
+<h2>Content:</h2> 
 <p>{{ post.content }}</p>
-<p>By<a href="/users/{{ post.users.id }}"> {{ post.users.get_full_name() }}</a></p>
+<p>By<a href="/users/{{ post.user_id }}"> {{ post.users.first_name }} {{ post.users.last_name }}</a></p>
+<h3>Tags:
+    <p>
+        {% for tag in tags %}
+        <div class="btn btn-sm btn-secondary">{{ tag.name }}</div>
+        {% endfor %}
+    </p>
+</h3>
 <form action="/posts/{{ post.id }}/edit" method="GET">
-    <button>Edit</button>
+    <button class="btn btn-md btn-warning">Edit</button>
 </form>
 <form action="/posts/{{ post.id }}/delete" method="GET">
-    <button>Delete</button>
+    <button class="btn btn-md btn-danger">Delete</button>
 </form>
 {% endblock %}
