@@ -163,13 +163,16 @@ def update_post_details(post_id):
 def delete_post(post_id):
     """Delete post from database session."""
     post = Post.query.get(post_id)
-    
-    user_id = User.query.get(post.user_id)
+    user_id = post.user_id
 
+    PostTag.query.filter_by(post_id=post_id).delete()
+    #Post.query.filter_by({"id": post_id}).all().delete()
+
+    
     db.session.delete(post)
     db.session.commit()
 
-    return redirect(f'/users/<int:user_id>', user_id=user_id)
+    return redirect(f'/users/{user_id}')
 
 '''TAGS'''
 @app.route('/tags', methods=["GET"])
